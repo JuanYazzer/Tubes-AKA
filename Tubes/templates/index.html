@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perbandingan Waktu Algoritma Pencarian Armstrong</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f1f7;
+            color: #333;
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            color: #e91e63;
+        }
+        form {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #e91e63;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #e91e63;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d81b60;
+        }
+        h2 {
+            color: #e91e63;
+            margin-top: 40px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .warning-message {
+            color: orange;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .success-message {
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Perbandingan Waktu Algoritma Pencarian Armstrong</h1>
+
+    <form method="POST">
+        <label for="input_num">Masukkan Angka untuk Dicek (Armstrong Number):</label>
+        <input type="number" id="input_num" name="input_num" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="message {{ category }}-message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% if graph_url_iterative %}
+        <h2>Grafik Perbandingan Waktu Algoritma Pencarian Sequential</h2>
+        <img src="data:image/png;base64,{{ graph_url_iterative }}" alt="Graph Perbandingan ">
+    {% endif %}
+</body>
+</html>
