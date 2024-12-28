@@ -27,9 +27,12 @@ def sequential_search(range_start, range_end, target):
 def recursive_sequential_search(range_start, range_end, target):
     if range_start > range_end:
         return False  # Reached the end of the range without finding the target
+        
+     if not is_armstrong(range_start):
+        return recursive_sequential_search(range_start + 1, range_end, target)
     
     # If current number is Armstrong, check if it matches the target
-    if is_armstrong(range_start) and range_start == target:
+    if range_start == target:
         return True
 
     # Continue the search
